@@ -6,72 +6,71 @@ const textoResultado = document.querySelector(".texto-resultado");
 
 const perguntas = [
     {
-        enunciado: "Assim que saiu da escola você se depara com uma nova tecnologia, um chat que consegue responder todas as dúvidas que uma pessoa pode ter, ele também gera imagens e áudios hiper-realistas. Qual o primeiro pensamento?",
+        enunciado: "Você está em uma reunião de grupo na escola e percebe que um colega está sendo excluído das discussões por causa de sua aparência. Qual é a sua reação inicial?",
         alternativas: [
             {
-                texto: "Isso é assustador!",
-                afirmacao: "afirmação"
+                texto: "Ignoro a situação, pois não quero me envolver em conflitos.",
+                afirmacao: "Você opta por não se envolver e ignora a situação."
             },
             {
-                texto: "Isso é maravilhoso!",
-                afirmacao: "afirmação"
+                texto: "Falo com o grupo para que todos incluam o colega nas discussões e reforço a importância de respeitar a diversidade.",
+                afirmacao: "Você intervém e promove a inclusão do colega na discussão."
             }
         ]
     },
     {
-        enunciado: "Com a descoberta desta tecnologia, chamada Inteligência Artificial, uma professora de tecnologia da escola decidiu fazer uma sequência de aulas sobre esta tecnologia. No fim de uma aula ela pede que você escreva um trabalho sobre o uso de IA em sala de aula. Qual atitude você toma?",
+        enunciado: "Durante uma atividade em sala de aula, um professor faz um comentário que você acha ofensivo para um grupo de alunos. O que você faz?",
         alternativas: [
             {
-                texto: "Utiliza uma ferramenta de busca na internet que utiliza IA para que ela ajude a encontrar informações relevantes para o trabalho e explique numa linguagem que facilite o entendimento.",
-                afirmacao: "afirmação"
+                texto: "Fico em silêncio e espero que a situação passe.",
+                afirmacao: "Você decide não agir e esperar que a situação se resolva sozinha."
             },
             {
-                texto: "Escreve o trabalho com base nas conversas que teve com colegas, algumas pesquisas na internet e conhecimentos próprios sobre o tema.",
-                afirmacao: "afirmação"
+                texto: "Conversa com o professor após a aula para expressar seu desconforto e sugerir uma abordagem mais inclusiva.",
+                afirmacao: "Você aborda o professor sobre o comentário e sugere uma abordagem mais inclusiva."
             }
         ]
     },
     {
-        enunciado: "Após a elaboração do trabalho escrito, a professora realizou um debate entre a turma para entender como foi realizada a pesquisa e escrita. Nessa conversa também foi levantado um ponto muito importante: como a IA impacta o trabalho do futuro. Nesse debate, como você se posiciona?",
+        enunciado: "Você recebe um trabalho em grupo e descobre que um dos membros do grupo está sendo tratado de forma diferente devido ao seu gênero. Como você reage?",
         alternativas: [
             {
-                texto: "Defende a ideia de que a IA pode criar novas oportunidades de emprego e melhorar habilidades humanas.",
-                afirmacao: "afirmação"
+                texto: "Aceito a situação como está e foco apenas na conclusão do trabalho.",
+                afirmacao: "Você aceita a situação e foca apenas na conclusão do trabalho."
             },
             {
-                texto: "Me preocupo com as pessoas que perderão seus empregos para máquinas e defendem a importância de proteger os trabalhadores.",
-                afirmacao: "afirmação"
+                texto: "Falo com os membros do grupo sobre a importância de tratar todos com igualdade e garantir que todos tenham a mesma oportunidade de contribuir.",
+                afirmacao: "Você aborda a questão de desigualdade e promove a igualdade no grupo."
             }
         ]
     },
     {
-        enunciado: "Ao final da discussão, você precisou criar uma imagem no computador que representasse o que pensa sobre IA. E agora?",
+        enunciado: "Você está ajudando a organizar um evento escolar e percebe que alguns alunos de diferentes origens culturais não estão sendo considerados nas decisões. O que você faz?",
         alternativas: [
             {
-                texto: "Criar uma imagem utilizando uma plataforma de design como o Paint.",
-                afirmacao: "afirmação"
+                texto: "Continuo com a organização como planejado, sem fazer mudanças.",
+                afirmacao: "Você continua a organização sem considerar as diferentes origens culturais."
             },
             {
-                texto: "Criar uma imagem utilizando um gerador de imagem de IA.",
-                afirmacao: "afirmação"
+                texto: "Sugiro a inclusão de representantes de diferentes origens culturais na equipe de organização para garantir que todos sejam considerados.",
+                afirmacao: "Você propõe a inclusão de representantes de diferentes origens culturais na organização."
             }
         ]
     },
     {
-        enunciado: "Você tem um trabalho em grupo de biologia para entregar na semana seguinte, o andamento do trabalho está um pouco atrasado e uma pessoa do seu grupo decidiu fazer com ajuda da IA. O problema é que o trabalho está totalmente igual ao do chat. O que você faz? ",
+        enunciado: "Em uma discussão sobre oportunidades de emprego no futuro, um colega menciona que algumas pessoas têm menos chances por causa de sua orientação sexual. Como você responde?",
         alternativas: [
             {
-                texto: "Escrever comandos para o chat é uma forma de contribuir com o trabalho, por isso não é um problema utilizar o texto inteiro.",
-                afirmacao: "afirmação"
+                texto: "Acredito que isso não é um problema significativo e que as oportunidades são iguais para todos.",
+                afirmacao: "Você minimiza o problema e acredita que as oportunidades são iguais para todos."
             },
             {
-                texto: "O chat pode ser uma tecnologia muito avançada, mas é preciso manter a atenção pois toda máquina erra, por isso revisar o trabalho e contribuir com as perspectivas pessoais é essencial.",
-                afirmacao: "afirmação"
+                texto: "Reconheço que a orientação sexual pode influenciar as oportunidades e defendo a importância de políticas que promovam a igualdade de oportunidades para todos.",
+                afirmacao: "Você reconhece a influência da orientação sexual nas oportunidades e defende políticas de igualdade."
             }
         ]
     },
 ];
-
 
 let atual = 0;
 let perguntaAtual;
@@ -84,30 +83,29 @@ function mostraPergunta() {
     }
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
-    caixaAlternativas.textContent = "";
+    caixaAlternativas.innerHTML = ""; // Limpa as alternativas antes de adicionar novas
     mostraAlternativas();
 }
 
-function mostraAlternativas(){
-    for(const alternativa of perguntaAtual.alternativas) {
-        const botaoAlternativas = document.createElement("button");
-        botaoAlternativas.textContent = alternativa.texto;
-        botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
-        caixaAlternativas.appendChild(botaoAlternativas);
-    }
+function mostraAlternativas() {
+    perguntaAtual.alternativas.forEach(alternativa => {
+        const botaoAlternativa = document.createElement("button");
+        botaoAlternativa.textContent = alternativa.texto;
+        botaoAlternativa.addEventListener("click", () => respostaSelecionada(alternativa));
+        caixaAlternativas.appendChild(botaoAlternativa);
+    });
 }
 
 function respostaSelecionada(opcaoSelecionada) {
-    const afirmacoes = opcaoSelecionada.afirmacao;
-    historiaFinal += afirmacoes + " ";
+    historiaFinal += opcaoSelecionada.afirmacao + " ";
     atual++;
     mostraPergunta();
 }
 
 function mostraResultado() {
-    caixaPerguntas.textContent = "Em 2049...";
+    caixaPerguntas.textContent = "Reflexão sobre Preconceito...";
     textoResultado.textContent = historiaFinal;
-    caixaAlternativas.textContent = "";
+    caixaAlternativas.innerHTML = ""; // Limpa alternativas no resultado
 }
 
 mostraPergunta();
